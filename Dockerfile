@@ -21,7 +21,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libc6-i386 \
     lib32z1 \
     zlib1g:i386 \
-    g++-multilib \
     libmysqlclient-dev:i386 \
     wget \
     tar \
