@@ -7,22 +7,22 @@ Here you get a Docker Image for the Game Call of Duty & Call of Duty: United Off
 ## 📦 What you get
  - Well documented Game Configurations
  - Multiple Versions (Classic CoD: `1.4`, `1.5`, `1.5b` | CoD:UO `1.51`)
+ - Multiple Servers with one install
  - Download latest Serverfiles
  - Also "cracked" binaries so any user can join!
 
 ## 🚀 How to start
 For a fast start simply 
 
-     docker create \
+    docker create \
       --name codclassic \
-      -p 20500-20510:20500-20510/udp \
       -p 28960:28960 \
       -p 28960:28960/udp \
       -v <your/path/to/game/>:/gameserver \
       -v <your/path/to/game/>:/config \
       -e COD_VERSION="1_5b" \
       -e COD_GAME="main" \
-      -e STARTUP="+set fs_homepath config/ +set dedicated 2 +exec dedicated.cfg" \
+      -e STARTUP="+set fs_homepath config/default +set dedicated 2 +exec dedicated.cfg" \
     keinnerd/codclassic:latest
 
 ## 🔧 Envs
@@ -31,11 +31,11 @@ For a fast start simply
 |----------------|-------------------------------|-----------------------------|
 |COD_VERSION     | CoD: `1_4` or `1_5` or `1_5b` / UO: `1_51` |For cracked add a `_cracked` behind the Version|
 |COD_GAME        |`main` or `uo` |`main` = Call of Duty / `uo` = Call of Duty: UO|
-|STARTUP         | "`+set fs_homepath config/ +set dedicated 2 +exec dedicated.cfg`" | Adjust your Start command (fs_basepath is hardcoded to /gameserver)
+|STARTUP         | "`+set fs_homepath config/default +set dedicated 2 +exec dedicated.cfg`" | Adjust your Start command (fs_basepath is hardcoded to /gameserver)
 
 ## 📁 Multiple Servers
 
-If you want to host multiple servers, create a new container then create inside your config folder different dirs and change `+set fs_homepath config/` to `config/server1` the next to `config/server1`. Create Configs inside the dirs and spin up the container. 
+If you want to host multiple servers, create a new container then create inside your config folder different dirs and change `+set fs_homepath config/default` to `config/server1` the next to `config/server2`. Create Configs inside the dirs and spin up the container. 
 
 ```
 ── /config
